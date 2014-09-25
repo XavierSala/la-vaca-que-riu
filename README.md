@@ -12,14 +12,14 @@ Exemples
 
 Tenim les següents vaques:
 
-| Vaca   | Pes en Kg | Producció de llet    |
-|--------|-----------|----------------------|
-| Maria  | 360       |  40 litres           |
-| Pepa   | 250       |  35 litres           |
-| Flor   | 400       |  43 litres           |
-| Toñi   | 180       |  28 litres           |
-| Xita   |  50       |  12 litres           |
-| Blanca |  90       |  13 litres           |
+| Vaca   | Pes en Kg | Raça              | Color          | Producció de llet   |
+|--------|-----------|-------------------|----------------|---------------------|
+| Maria  | 360       | Holstein-Friesian | Blanca i negra | 40 litres           |
+| Pepa   | 250       | Jersey            | Marró          | 35 litres           |
+| Flor   | 400       | Simmental         | Blanca i marró | 43 litres           |
+| Toñi   | 180       | Jersey            | Marró          | 28 litres           |
+| Xita   |  50       | Guernsey          | Blanca         | 12 litres           |
+| Blanca |  90       | Ayshire           | Blanca i marró | 13 litres           |
 
 Càrrega del camió: 700 Kg
 
@@ -28,31 +28,31 @@ Resultat: Maria, Toñi, Xita i Blanca = 93 Litres
 
 Altres exemples podríen ser: 
 
-| Vaca   | Pes en Kg   | Producció de llet    |
-|----------|-----------|----------------------|
-| Pica     |   223     | 34 litres            |
-| Mica     |   243     | 28 litres            |
-| Penta    |   100     | 45 litres            |
-| Hexa     |   200     | 31 litres            |
-| Escallot |   200     | 50 litres            |
-| Tacada   |   155     | 29 litres            |
-| Bruna    |   300     | 16 litres            |
-| Neu      |   150     | 10 litres            |
+| Vaca   | Pes en Kg   | Raça              | Color          | Producció de llet    |
+|----------|-----------|-------------------|----------------|----------------------|
+| Pica     |   223     | Jersey            | Marró          | 34 litres            |
+| Mica     |   243     | Holstein-Friesian | Blanca i negra | 28 litres            |
+| Penta    |   100     | Simmental         | Blanca         | 45 litres            |
+| Hexa     |   200     | Guernsey          | Blanca i marró | 31 litres            |
+| Escallot |   200     | Holstein-Friesian | Negra          | 50 litres            |
+| Tacada   |   155     | Jersey            | Marró clar     | 29 litres            |
+| Bruna    |   300     | Jersey            | Marró          | 16 litres            |
+| Neu      |   150     | Parda             | Marró clar     | 10 litres            |
 
 Càrrega del camió: 1000 Kg
 
-| Vaca   | Pes en Kg   | Producció de llet    |
-|--------|-------------|----------------------|
-| Guapa  |  340        | 45 litres            |
-| Bona   |  355        | 50 litres            |
-| Bonica |  223        | 34 litres            |
-| Fletxa |  243        | 39 litres            |
-| Patata |  130        | 29 litres            |
-| Dansa  |  240        | 40 litres            |
-| Conxi  |  260        | 30 litres            |
-| Perla  |  155        | 25 litres            |
-| Mosca  |  302        | 52 litres            |
-| Pepi   |  130        | 31 litres            |
+| Vaca   | Pes en Kg   | Raça              | Color          | Producció de llet    |
+|--------|-------------|-------------------|----------------|----------------------|
+| Guapa  |  340        | Jersey            | Marró          | 45 litres            |
+| Bona   |  355        | Holstein-Friesian | Negra          | 50 litres            |
+| Bonica |  223        | Jersey            | Marró clar     | 34 litres            |
+| Fletxa |  243        | Simmental         | Marró i blanc  | 39 litres            |
+| Patata |  130        | Guernsey          | Blanca         | 29 litres            |
+| Dansa  |  240        | Guernsey          | Blanca         | 40 litres            |
+| Conxi  |  260        | Simmental         | Marró          | 30 litres            |
+| Perla  |  155        | Parda             | Marró clar     | 25 litres            |
+| Mosca  |  302        | Holstein-Friesian | Blanca i negra | 52 litres            |
+| Pepi   |  130        | Guernsey          | Marró          | 31 litres            |
 
 Introducció
 -----------------
