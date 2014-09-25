@@ -14,10 +14,12 @@ public final class Principal {
      */
     private static final int PESDELCAMIO = 700;
 
+
     /**
-     * Llista amb les vaques del problema.
+     * Cadena per emmagatzemar el resultat de calcular la millor
+     * càrrega del camió.
      */
-    private static ArrayList<Vaca> vaques;
+    private static String millorCarrega;
 
     /**
      * Evitar que es crein objectes a partir de la classe.
@@ -34,12 +36,10 @@ public final class Principal {
     public static void main(final String[] args) {
 
         //Dades de les vaques
-        String[] noms = {"Marian", "Pepa", "Flor", "Toñi", "Conxita", "Blanca"};
+        String[] noms = {"Maria", "Pepa", "Flor", "Toñi", "Conxita", "Blanca"};
         int[] pesos   = {360,    250,    400,    180,    50,         90};
         int[] litres  = {40,     35,     43,     28,    12,         13};
-
-        // Genero la llista de vaques.
-        vaques = new ArrayList<Vaca>();
+        ArrayList<Vaca> vaques = new ArrayList<Vaca>();
         for (int i = 0; i < noms.length; i++) {
             vaques.add(new Vaca(noms[i], pesos[i], litres[i]));
         }
@@ -47,32 +47,50 @@ public final class Principal {
         // Creo el camió definint-li el pes màxim.
         Camio trailer = new Camio(PESDELCAMIO);
 
-        // ACCIÓ
-        trailer = emplenaCamioSensePensar(trailer);
-        System.out.println(trailer.getNomsDeVaques() + " : "
-                           + trailer.getLitres() + " litres");
+        millorCarrega = "";
+        int llet = emplenaCamio(vaques, 0, 0, trailer);
+
+        System.out.println("Resultat: " + millorCarrega
+                + ": " + llet + " litres");
 
     }
 
-
     /**
-     * Calcula quines vaques s'han de posar al camió.
+     * Emplena el camió intentant posar les millors vaques.
+     * @param vaques Array amb les vaques que es poden carregar
+     * @param posicio posició de la vaca que provem
+     * @param maxim número màxim de litres que s'aconsegueix
      * @param trailer Camió
-     * @return camió amb les vaques posades
+     * @return El número màxim de litres
      */
-    private static Camio emplenaCamioSensePensar(final Camio trailer) {
+    private static int emplenaCamio(final ArrayList<Vaca> vaques,
+            final int posicio,
+            final int maxim,
+            final Camio trailer) {
 
-        // Entro els camions
-        for (int i = 0; i < vaques.size(); i++) {
+        int litres = 0;
+        int maximActual = maxim;
+
+
+        for (int i = posicio; i < vaques.size(); i++) {
 
             if (trailer.entraVaca(vaques.get(i))) {
-                System.out.println(vaques.get(i).getNom() + " ha entrat!");
-            } else {
-                System.out.println(vaques.get(i).getNom() + " rebutjada");
+
+                if (maximActual < trailer.getLitres()) {
+                    maximActual = trailer.getLitres();
+                    millorCarrega = trailer.toString();
+                }
+                // maximActual = Math.max(maximActual, trailer.getLitres());
+                litres = emplenaCamio(vaques, i + 1, maximActual, trailer);
+
+                maximActual = Math.max(litres, maximActual);
+
+                trailer.treuUltimaVaca();
             }
         }
 
-        return trailer;
+        return maximActual;
+
     }
 
 }

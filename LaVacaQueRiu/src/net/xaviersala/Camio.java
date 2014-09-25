@@ -81,6 +81,23 @@ public class Camio {
     }
 
     /**
+     * Treu la darrera vaca que s'ha posat.
+     * @return La vaca treta
+     */
+    public final Vaca treuUltimaVaca() {
+        Vaca burra = null;
+
+        if (!vaques.isEmpty()) {
+            int ultima = vaques.size() - 1;
+            burra = vaques.get(ultima);
+            vaques.remove(ultima);
+            litres -= burra.getLitres();
+            pesActual -= burra.getPes();
+        }
+        return burra;
+    }
+
+    /**
      * @return Retorna el pes de les vaques que ja s'han carregat en el
      * camió.
      */
@@ -112,4 +129,6 @@ public class Camio {
     public final String toString() {
         return getNomsDeVaques();
     }
+
+
 }
