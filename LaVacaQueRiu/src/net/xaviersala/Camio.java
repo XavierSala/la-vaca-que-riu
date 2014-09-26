@@ -44,7 +44,7 @@ public class Camio {
      * @return retorna si la vaca ha pogut entrar o no
      */
     public final boolean entraVaca(final Vaca nova) {
-        if (pesActual + nova.getPes() < pesMaxim) {
+        if (pesActual + nova.getPes() <= pesMaxim) {
             vaques.add(nova);
             pesActual += nova.getPes();
             litres += nova.getLitres();

@@ -74,7 +74,7 @@ public class Vaca {
      * @return el nom de la vaca
      */
     public final String toString() {
-        return nom + " " + pes;
+        return nom;
     }
 
 }
