@@ -9,17 +9,11 @@ import java.util.ArrayList;
  *
  */
 public final class Principal {
+
     /**
      * Pes màxim que pot portar el camió.
      */
     private static final int PESDELCAMIO = 700;
-
-
-    /**
-     * Cadena per emmagatzemar el resultat de calcular la millor
-     * càrrega del camió.
-     */
-    private static String millorCarrega;
 
     /**
      * Evitar que es crein objectes a partir de la classe.
@@ -47,11 +41,11 @@ public final class Principal {
         // Creo el camió definint-li el pes màxim.
         Camio trailer = new Camio(PESDELCAMIO);
 
-        millorCarrega = "";
-        int llet = emplenaCamio(vaques, 0, 0, trailer);
+        Resultat maxim = new Resultat();
+        Resultat llet = emplenaCamio(vaques, 0, maxim, trailer);
 
-        System.out.println("Resultat: " + millorCarrega
-                + ": " + llet + " litres");
+        System.out.println("Resultat: " + llet.getLlista()
+                + ": " + llet.getMaxim() + " litres");
 
     }
 
@@ -59,31 +53,35 @@ public final class Principal {
      * Emplena el camió intentant posar les millors vaques.
      * @param vaques Array amb les vaques que es poden carregar
      * @param posicio posició de la vaca que provem
-     * @param maxim número màxim de litres que s'aconsegueix
+     * @param resultat número màxim de litres que s'aconsegueix
      * @param trailer Camió
      * @return El número màxim de litres
      */
-    private static int emplenaCamio(final ArrayList<Vaca> vaques,
+    public static Resultat emplenaCamio(final ArrayList<Vaca> vaques,
             final int posicio,
-            final int maxim,
+            final Resultat resultat,
             final Camio trailer) {
 
-        int litres = 0;
-        int maximActual = maxim;
+        Resultat litres = new Resultat();
+
+        Resultat maximActual = new Resultat(resultat);
 
 
         for (int i = posicio; i < vaques.size(); i++) {
 
             if (trailer.entraVaca(vaques.get(i))) {
 
-                if (maximActual < trailer.getLitres()) {
-                    maximActual = trailer.getLitres();
-                    millorCarrega = trailer.toString();
+                if (maximActual.getMaxim() < trailer.getLitres()) {
+                    maximActual.setMaxim(trailer.getLitres());
+                    maximActual.setLlista(trailer.toString());
                 }
                 // maximActual = Math.max(maximActual, trailer.getLitres());
-                litres = emplenaCamio(vaques, i + 1, maximActual, trailer);
+                litres = emplenaCamio(vaques, i + 1, resultat, trailer);
 
-                maximActual = Math.max(litres, maximActual);
+                if (litres.getMaxim() > maximActual.getMaxim()) {
+                    maximActual.setMaxim(litres.getMaxim());
+                    maximActual.setLlista(litres.getLlista());
+                }
 
                 trailer.treuUltimaVaca();
             }

@@ -1,31 +1,57 @@
 package net.xaviersala;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Comprovar el camió.
+ *
+ * @author xavier
+ *
+ */
 public class CamioTest {
 
     /**
      * Pes de la vaca 1.
      */
     static final int PESVACA1 = 300;
+    /**
+     * Pes de la vaca 2.
+     */
     static final int PESVACA2 = 200;
+    /**
+     * Pes de la vaca 3.
+     */
     static final int PESVACA3 = 100;
+    /**
+     * Quantitat de llet.
+     */
     static final int LLET = 20;
 
-    Camio truck;
-    ArrayList<Vaca> vaques;
+    /**
+     * Camió on emplenem.
+     */
+    private Camio truck;
+
+    /**
+     * Llista de vaques.
+     */
+    private ArrayList<Vaca> vaques;
 
     /**
      * Crear els objectes per fer les proves.
      * @throws Exception Alguna cosa no va...
      */
     @Before
-    public void setUp() throws Exception {
+    public final void setUp() throws Exception {
         vaques = new ArrayList<Vaca>();
         vaques.add(new Vaca("Un", PESVACA1, LLET));
         vaques.add(new Vaca("Dos", PESVACA2, LLET));
@@ -37,7 +63,7 @@ public class CamioTest {
      * suporta.
      */
     @Test
-    public void ComprovaQueNoDeixaSuperarElMaxim() {
+    public final void testNoDeixaSuperarElMaxim() {
 
         // Entrar una vaca i comprovar que ha entrat
         truck = new Camio(vaques.get(0).getPes());
