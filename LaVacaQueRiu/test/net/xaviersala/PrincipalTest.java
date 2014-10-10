@@ -108,4 +108,54 @@ public class PrincipalTest {
         assertEquals("0 X ", r.getLlista());
     }
 
+    /**
+     * Exemples proposats.
+     *    Camió 1000 kg --> 189 litres
+     *                      Pica Penta Hexa Escallot Tacada
+     */
+    @Test
+    public final void testExemple1() {
+        ArrayList<Vaca> llista = new ArrayList<Vaca>();
+
+        llista.add(new Vaca("Pica", 223, 34));
+        llista.add(new Vaca("Mica", 243, 28));
+        llista.add(new Vaca("Penta", 100, 45));
+        llista.add(new Vaca("Hexa", 200, 31));
+        llista.add(new Vaca("Escallot", 200, 50));
+        llista.add(new Vaca("Tacada", 155, 29));
+        llista.add(new Vaca("Bruna", 300, 16));
+        llista.add(new Vaca("Neu", 150, 10));
+
+        Camio truck = new Camio(1000);
+        Resultat r = Principal.emplenaCamio(llista, 0, new Resultat(), truck);
+
+        assertEquals(189, r.getMaxim());
+        assertEquals("Pica Penta Hexa Escallot Tacada ", r.getLlista());
+    }
+
+    /**
+     * Exemples proposats.
+     *    Camió 700 kg --> 125 litres
+     *                     Patata Dansa Perla Pepi
+     */
+    @Test
+    public final void testExemple2() {
+        ArrayList<Vaca> llista = new ArrayList<Vaca>();
+
+        llista.add(new Vaca("Guapa", 340, 45));
+        llista.add(new Vaca("Bona", 355, 50));
+        llista.add(new Vaca("Bonica", 223, 34));
+        llista.add(new Vaca("Fletxa", 243, 39));
+        llista.add(new Vaca("Patata", 130, 29));
+        llista.add(new Vaca("Dansa", 240, 40));
+        llista.add(new Vaca("Conxi", 260, 30));
+        llista.add(new Vaca("Perla", 155, 25));
+        llista.add(new Vaca("Mosca", 302, 52));
+        llista.add(new Vaca("Pepi", 130, 31));
+
+        Camio truck = new Camio(700);
+        Resultat r = Principal.emplenaCamio(llista, 0, new Resultat(), truck);
+        assertEquals(125, r.getMaxim());
+        assertEquals("Patata Dansa Perla Pepi ", r.getLlista());
+    }
 }

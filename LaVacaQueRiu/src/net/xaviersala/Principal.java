@@ -1,6 +1,7 @@
 package net.xaviersala;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Programa d'entrada de vaques en un camió.
@@ -30,13 +31,14 @@ public final class Principal {
     public static void main(final String[] args) {
 
         //Dades de les vaques
-        String[] noms = {"Maria", "Pepa", "Flor", "Toñi", "Conxita", "Blanca"};
-        int[] pesos   = {360,    250,    400,    180,    50,         90};
-        int[] litres  = {40,     35,     43,     28,    12,         13};
-        ArrayList<Vaca> vaques = new ArrayList<Vaca>();
-        for (int i = 0; i < noms.length; i++) {
-            vaques.add(new Vaca(noms[i], pesos[i], litres[i]));
-        }
+        List<Vaca> vaques = Arrays.asList(
+                new Vaca("Maria", 360, 40),
+                new Vaca("Pepa", 250, 35),
+                new Vaca("Flor", 400, 43),
+                new Vaca("Toñi", 180, 28),
+                new Vaca("Conxita", 50, 12),
+                new Vaca("Blanca", 90, 13)
+                );
 
         // Creo el camió definint-li el pes màxim.
         Camio trailer = new Camio(PESDELCAMIO);
@@ -44,8 +46,7 @@ public final class Principal {
         Resultat maxim = new Resultat();
         Resultat llet = emplenaCamio(vaques, 0, maxim, trailer);
 
-        System.out.println("Resultat: " + llet.getLlista()
-                + ": " + llet.getMaxim() + " litres");
+        System.out.println(llet);
 
     }
 
@@ -57,7 +58,7 @@ public final class Principal {
      * @param trailer Camió
      * @return El número màxim de litres
      */
-    public static Resultat emplenaCamio(final ArrayList<Vaca> vaques,
+    public static Resultat emplenaCamio(final List<Vaca> vaques,
             final int posicio,
             final Resultat resultat,
             final Camio trailer) {

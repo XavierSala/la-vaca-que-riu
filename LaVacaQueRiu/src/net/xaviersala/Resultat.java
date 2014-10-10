@@ -76,4 +76,11 @@ class Resultat {
     public void setLlista(final String lli) {
         this.llista = lli;
     }
+
+    /**
+     * @return retorna el resultat
+     */
+    public String toString() {
+        return llista + ": " + maxim + " litres";
+    }
 }
